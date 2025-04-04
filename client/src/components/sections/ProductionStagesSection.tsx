@@ -138,7 +138,8 @@ export default function ProductionStagesSection() {
   ];
 
   const preProductionStages = productionStages.filter(stage => stage.category === 'Pre-Production');
-  const productionStages2 = productionStages.filter(stage => stage.category === 'Production' || stage.category === 'Post-Production');
+  const productionStages2 = productionStages.filter(stage => stage.category === 'Production');
+  const postProductionStages = productionStages.filter(stage => stage.category === 'Post-Production');
 
   const activeStage = productionStages.find(stage => stage.id === activeTab);
 
@@ -181,10 +182,30 @@ export default function ProductionStagesSection() {
             </div>
           </div>
 
-          <div>
-            <h3 className="text-xl text-gray-400 mb-4">Production & Post-Production</h3>
+          <div className="mb-10">
+            <h3 className="text-xl text-gray-400 mb-4">Production</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {productionStages2.map((stage) => (
+                <button
+                  key={stage.id}
+                  onClick={() => setActiveTab(stage.id)}
+                  className={cn(
+                    "flex flex-col items-center p-4 rounded-lg transition-all duration-300 hover:bg-zinc-800/70 backdrop-blur-sm",
+                    activeTab === stage.id ? "bg-zinc-800/80 border border-zinc-600" : "bg-zinc-900/50"
+                  )}
+                >
+                  <div className="mb-2 text-white">{stage.icon}</div>
+                  <h4 className="text-sm text-center">{stage.title}</h4>
+                  <p className="text-xs text-gray-400 mt-1">{stage.category}</p>
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          <div>
+            <h3 className="text-xl text-gray-400 mb-4">Post-Production</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {postProductionStages.map((stage) => (
                 <button
                   key={stage.id}
                   onClick={() => setActiveTab(stage.id)}

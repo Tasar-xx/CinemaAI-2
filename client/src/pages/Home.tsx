@@ -98,8 +98,8 @@ export default function Home() {
           <Header />
           <HeroSection />
           <IntroSection />
-          <ToolsSection />
           <WorkflowSection />
+          <ToolsSection />
           <BenefitsSection />
           <DemoSection />
           <ProductionStagesSection />
