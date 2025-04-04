@@ -27,7 +27,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-white text-2xl font-bold tracking-tight">FilmAI</span>
+            <span className="text-white text-2xl font-bold tracking-tight">Qlab AI</span>
           </motion.div>
           
           <motion.nav 
