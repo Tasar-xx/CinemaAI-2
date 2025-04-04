@@ -10,7 +10,6 @@ import { fadeInUp } from '@/lib/animation';
 export default function ToolsSection() {
   const [visibleTools, setVisibleTools] = useState(6);
   const [isLoading, setIsLoading] = useState(false);
-  const [activeTool, setActiveTool] = useState(tools[0]?.id);
   
   const handleLoadMore = () => {
     if (isLoading) return;
@@ -21,62 +20,59 @@ export default function ToolsSection() {
       setIsLoading(false);
     }, 800);
   };
-
-  const activeToolData = tools.find(tool => tool.id === activeTool);
   
   return (
-    <section id="tools" className="py-24 bg-black relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollAnimation animation="fadeUp" className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
-            AI Tools for Every Filmmaking Stage
+    <section id="tools" className="py-32 bg-black relative overflow-hidden">
+      {/* Background gradient blur elements */}
+      <div className="absolute top-1/4 -left-80 w-[500px] h-[500px] rounded-full bg-purple-500/20 blur-[150px]" />
+      <div className="absolute bottom-1/3 -right-80 w-[600px] h-[600px] rounded-full bg-blue-500/20 blur-[180px]" />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <ScrollAnimation animation="fadeUp" className="max-w-4xl mx-auto text-center mb-24">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
+            AI Tools for Filmmaking
           </h2>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-            From script development to post-production, our suite of AI tools transforms how you conceptualize, visualize, and create films.
+            Our suite of AI tools transforms how you conceptualize, visualize, and create films.
           </p>
         </ScrollAnimation>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
-          {tools.slice(0, visibleTools).map((tool) => (
-            <button
+        <div className="grid lg:grid-cols-2 gap-16">
+          {tools.slice(0, visibleTools).map((tool, index) => (
+            <ScrollAnimation 
               key={tool.id}
-              onClick={() => setActiveTool(tool.id)}
-              className={cn(
-                "flex flex-col items-center p-4 rounded-lg transition-all duration-300 hover:bg-zinc-800/70 backdrop-blur-sm",
-                activeTool === tool.id ? "bg-zinc-800/80 border border-zinc-600" : "bg-zinc-900/50"
-              )}
+              animation="fadeUp"
+              delay={index * 0.15}
             >
-              <div className="h-12 w-12 bg-zinc-800 rounded-lg flex items-center justify-center mb-3">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={tool.icon}></path>
-                </svg>
-              </div>
-              <h4 className="text-sm text-center">{tool.title}</h4>
-            </button>
-          ))}
-        </div>
-        
-        {activeToolData && (
-          <ScrollAnimation>
-            <ReflectiveSurface className="rounded-xl p-8 mb-16">
-              <div className="flex flex-col md:flex-row gap-10">
-                <div className="md:w-1/2">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="h-14 w-14 bg-zinc-800 rounded-lg flex items-center justify-center">
+              <motion.div 
+                className="relative group"
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+              >
+                {/* Glass effect card */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 rounded-3xl backdrop-blur-2xl border border-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.4)] group-hover:border-white/20 transition-all duration-500" />
+                
+                <div className="relative p-10 h-full">
+                  <div className="flex items-start gap-6 mb-8">
+                    <div className="flex-shrink-0 h-16 w-16 bg-gradient-to-br from-zinc-800 to-zinc-700 rounded-xl flex items-center justify-center shadow-lg">
                       <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={activeToolData.icon}></path>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d={tool.icon}></path>
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-bold">{activeToolData.title}</h3>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-2">{tool.title}</h3>
+                      <p className="text-gray-400 text-base">{tool.description}</p>
+                    </div>
                   </div>
                   
-                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                    {activeToolData.description}
-                  </p>
+                  <AspectRatio ratio={16/9} className="rounded-xl overflow-hidden bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 shadow-xl mb-6">
+                    <div className="flex items-center justify-center h-full p-6 text-center">
+                      <p className="text-gray-400">{tool.demoText}</p>
+                    </div>
+                  </AspectRatio>
                   
                   <a 
-                    href={activeToolData.learnMoreLink} 
-                    className="inline-flex items-center px-6 py-3 rounded-md bg-white/10 hover:bg-white/20 transition-colors text-white font-medium"
+                    href={tool.learnMoreLink} 
+                    className="inline-flex items-center px-6 py-3 rounded-md bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 text-white font-medium shadow-lg border border-white/5 hover:border-white/20"
                   >
                     Learn more
                     <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,25 +80,17 @@ export default function ToolsSection() {
                     </svg>
                   </a>
                 </div>
-                
-                <div className="md:w-1/2">
-                  <AspectRatio ratio={16/9} className="rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
-                    <div className="flex items-center justify-center h-full p-6 text-center">
-                      <p className="text-gray-400">{activeToolData.demoText}</p>
-                    </div>
-                  </AspectRatio>
-                </div>
-              </div>
-            </ReflectiveSurface>
-          </ScrollAnimation>
-        )}
+              </motion.div>
+            </ScrollAnimation>
+          ))}
+        </div>
         
         {visibleTools < tools.length && (
-          <div className="mt-8 text-center">
+          <div className="mt-20 text-center">
             <button
               onClick={handleLoadMore}
               disabled={isLoading}
-              className="inline-flex items-center px-6 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white hover:bg-opacity-5 transition-colors"
+              className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-900 hover:from-zinc-700 hover:to-zinc-800 text-base font-medium text-white transition-all duration-300 shadow-lg border border-zinc-700 hover:border-zinc-600"
             >
               {isLoading ? (
                 <>
