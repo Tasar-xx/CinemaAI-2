@@ -10,9 +10,9 @@ export default function DemoSection() {
           <ReflectiveSurface className="max-w-5xl mx-auto rounded-2xl p-8 md:p-12">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">See FilmAI in Action</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">See Qlab AI in Action</h2>
                 <p className="text-gray-300 mb-6">
-                  Watch how FilmAI transforms a simple script into a fully visualized concept, complete with character designs, locations, and cinematography.
+                  Watch how Qlab AI transforms a simple script into a fully visualized concept, complete with character designs, locations, and cinematography.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center">
