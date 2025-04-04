@@ -70,17 +70,17 @@ export default function HeroSection() {
       <motion.div 
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        whileHover={{ y: 3 }}
-        animate={{
-          y: [0, -8, 0],
+        animate={{ 
+          opacity: 1,
+          y: [0, -8, 0]
         }}
         transition={{
+          delay: 1.2,
           duration: 1.5,
           repeat: Infinity,
-          repeatType: "loop",
+          repeatType: "loop"
         }}
+        whileHover={{ y: 3 }}
       >
         <svg className="w-8 h-8 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
           <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
