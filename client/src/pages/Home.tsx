@@ -6,6 +6,7 @@ import ToolsSection from '@/components/sections/ToolsSection';
 import WorkflowSection from '@/components/sections/WorkflowSection';
 import BenefitsSection from '@/components/sections/BenefitsSection';
 import DemoSection from '@/components/sections/DemoSection';
+import ProductionStagesSection from '@/components/sections/ProductionStagesSection';
 import FutureSection from '@/components/sections/FutureSection';
 import Footer from '@/components/layout/Footer';
 import LoadingScreen from '@/components/ui/LoadingScreen';
@@ -101,6 +102,7 @@ export default function Home() {
           <WorkflowSection />
           <BenefitsSection />
           <DemoSection />
+          <ProductionStagesSection />
           <FutureSection />
           <Footer />
           
