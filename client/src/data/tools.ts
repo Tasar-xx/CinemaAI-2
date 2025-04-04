@@ -1,0 +1,83 @@
+export interface Tool {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  demoText: string;
+  learnMoreLink: string;
+}
+
+export const tools: Tool[] = [
+  {
+    id: "script",
+    title: "Script Development",
+    description: "Modify character arcs, plot points, and story elements to see how changes affect the overall narrative in real-time.",
+    icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+    demoText: "Script visualization demo",
+    learnMoreLink: "#",
+  },
+  {
+    id: "concept-art",
+    title: "Concept Art Generation",
+    description: "Create and iterate through various versions of visual concepts in real-time, adjusting to match your directorial vision.",
+    icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
+    demoText: "Concept art generation demo",
+    learnMoreLink: "#",
+  },
+  {
+    id: "look-dev",
+    title: "Look Development",
+    description: "Experiment with film styles, aspect ratios, color profiles, and lighting schemes to establish your project's visual identity.",
+    icon: "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.172 2.172a2 2 0 010 2.828l-8.486 8.486a2 2 0 01-2.828 0l-2.172-2.172a2 2 0 010-2.828L7.343 11z",
+    demoText: "Look development demo",
+    learnMoreLink: "#",
+  },
+  {
+    id: "character-dev",
+    title: "Character Development",
+    description: "Try endless character looks, visualize costume options, and map actors' faces to see how they fit your character vision.",
+    icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
+    demoText: "Character visualization demo",
+    learnMoreLink: "#",
+  },
+  {
+    id: "location-scouting",
+    title: "Virtual Location Scouting",
+    description: "Scout locations remotely in 3D, explore spaces from any angle, and visualize set modifications before physical production.",
+    icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
+    demoText: "3D location scouting demo",
+    learnMoreLink: "#",
+  },
+  {
+    id: "storyboarding",
+    title: "AI Storyboarding",
+    description: "Generate detailed storyboards from script sections, visualize shot sequences, and plan camera blocking with precision.",
+    icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
+    demoText: "Storyboard generation demo",
+    learnMoreLink: "#",
+  },
+  {
+    id: "camera-lensing",
+    title: "Camera Lensing",
+    description: "Choose different lenses for different looks of the film, modulate picture profiles similar to various professional cameras.",
+    icon: "M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z M15 13a3 3 0 11-6 0 3 3 0 016 0z",
+    demoText: "Camera lens simulation demo",
+    learnMoreLink: "#",
+  },
+  {
+    id: "performance-capture",
+    title: "AI Performance Capture",
+    description: "Generate performance animations from text, capture motion with a single video shot, or map actions to digital characters.",
+    icon: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z",
+    demoText: "Performance capture demo",
+    learnMoreLink: "#",
+  },
+  {
+    id: "post-editing",
+    title: "Post-Shot Editing",
+    description: "Apply various camera movements, relight scenes, change dialogue, modify physics, or enhance sound after shooting.",
+    icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
+    demoText: "Post-shot editing demo",
+    learnMoreLink: "#",
+  }
+];
