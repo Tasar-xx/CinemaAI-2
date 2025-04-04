@@ -153,47 +153,49 @@ export default function ProductionStagesSection() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Revolutionize Your Production</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
+              Revolutionize Your Production
+            </h2>
             <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
               AI-powered tools for every stage of your filmmaking journey.
             </p>
           </motion.div>
 
           <div className="mb-10">
-            <h3 className="text-xl text-blue-400 mb-4">Pre-Production</h3>
+            <h3 className="text-xl text-gray-400 mb-4">Pre-Production</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {preProductionStages.map((stage) => (
                 <button
                   key={stage.id}
                   onClick={() => setActiveTab(stage.id)}
                   className={cn(
-                    "flex flex-col items-center p-4 rounded-lg transition-all duration-300 hover:bg-blue-900/30",
-                    activeTab === stage.id ? "bg-blue-900/30 border border-blue-500/50" : "bg-blue-950/50"
+                    "flex flex-col items-center p-4 rounded-lg transition-all duration-300 hover:bg-zinc-800/70 backdrop-blur-sm",
+                    activeTab === stage.id ? "bg-zinc-800/80 border border-zinc-600" : "bg-zinc-900/50"
                   )}
                 >
-                  <div className="mb-2 text-blue-400">{stage.icon}</div>
+                  <div className="mb-2 text-white">{stage.icon}</div>
                   <h4 className="text-sm text-center">{stage.title}</h4>
-                  <p className="text-xs text-blue-400 mt-1">{stage.category}</p>
+                  <p className="text-xs text-gray-400 mt-1">{stage.category}</p>
                 </button>
               ))}
             </div>
           </div>
 
           <div>
-            <h3 className="text-xl text-blue-400 mb-4">Production & Post-Production</h3>
+            <h3 className="text-xl text-gray-400 mb-4">Production & Post-Production</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {productionStages2.map((stage) => (
                 <button
                   key={stage.id}
                   onClick={() => setActiveTab(stage.id)}
                   className={cn(
-                    "flex flex-col items-center p-4 rounded-lg transition-all duration-300 hover:bg-blue-900/30",
-                    activeTab === stage.id ? "bg-blue-900/30 border border-blue-500/50" : "bg-blue-950/50"
+                    "flex flex-col items-center p-4 rounded-lg transition-all duration-300 hover:bg-zinc-800/70 backdrop-blur-sm",
+                    activeTab === stage.id ? "bg-zinc-800/80 border border-zinc-600" : "bg-zinc-900/50"
                   )}
                 >
-                  <div className="mb-2 text-blue-400">{stage.icon}</div>
+                  <div className="mb-2 text-white">{stage.icon}</div>
                   <h4 className="text-sm text-center">{stage.title}</h4>
-                  <p className="text-xs text-blue-400 mt-1">{stage.category}</p>
+                  <p className="text-xs text-gray-400 mt-1">{stage.category}</p>
                 </button>
               ))}
             </div>
@@ -207,24 +209,24 @@ export default function ProductionStagesSection() {
             <div className="flex flex-col md:flex-row gap-8">
               <div className="md:w-1/2">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="bg-blue-900/40 p-3 rounded-lg text-blue-400">
+                  <div className="bg-zinc-800/80 p-3 rounded-lg">
                     {activeStage.icon}
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold">{activeStage.title}</h3>
-                    <p className="text-blue-400">{activeStage.category}</p>
+                    <p className="text-gray-400">{activeStage.category}</p>
                   </div>
                 </div>
-                <p className="text-lg leading-relaxed mb-8">
+                <p className="text-lg leading-relaxed mb-8 text-gray-300">
                   {activeStage.description}
                 </p>
               </div>
               <div className="md:w-1/2">
-                <div className="aspect-video rounded-lg overflow-hidden bg-gray-900">
+                <div className="aspect-video rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
                   <img 
                     src={activeStage.imageUrl} 
                     alt={activeStage.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
                   />
                 </div>
               </div>
