@@ -34,7 +34,7 @@ export default function FutureSection() {
         <ScrollAnimation animation="fadeUp" className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">The Future of AI Filmmaking</h2>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-            As AI technology continues to advance, the capabilities of FilmAI will expand, opening up new possibilities for filmmakers.
+            As AI technology continues to advance, the capabilities of Qlab AI will expand, opening up new possibilities for filmmakers.
           </p>
         </ScrollAnimation>
         
