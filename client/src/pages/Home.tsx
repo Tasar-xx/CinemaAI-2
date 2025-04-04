@@ -8,10 +8,22 @@ import BenefitsSection from '@/components/sections/BenefitsSection';
 import DemoSection from '@/components/sections/DemoSection';
 import FutureSection from '@/components/sections/FutureSection';
 import Footer from '@/components/layout/Footer';
+import LoadingScreen from '@/components/ui/LoadingScreen';
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isInfiniteLoading, setIsInfiniteLoading] = useState(false);
+  const [isPageLoading, setIsPageLoading] = useState(true);
+  
+  // Handle initial page loading
+  useEffect(() => {
+    // Simulate page loading time
+    const timer = setTimeout(() => {
+      setIsPageLoading(false);
+    }, 3000); // 3 seconds to show the loading screen
+    
+    return () => clearTimeout(timer);
+  }, []);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -23,11 +35,11 @@ export default function Home() {
       const windowHeight = window.innerHeight;
       const totalHeight = document.body.scrollHeight;
       
-      if (scrollPosition + windowHeight > totalHeight - 200 && !isLoading) {
+      if (scrollPosition + windowHeight > totalHeight - 200 && !isInfiniteLoading) {
         // Don't actually load more content, just simulate the loading indicator
-        setIsLoading(true);
+        setIsInfiniteLoading(true);
         setTimeout(() => {
-          setIsLoading(false);
+          setIsInfiniteLoading(false);
         }, 1000);
       }
     };
@@ -58,36 +70,45 @@ export default function Home() {
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('click', handleAnchorClick);
     };
-  }, [isLoading]);
+  }, [isInfiniteLoading]);
   
   // Animation on initial load
   useEffect(() => {
-    // Trigger animation for elements already in view
-    const scrollingElements = document.querySelectorAll('.scrolling-animation');
-    
-    scrollingElements.forEach(element => {
-      const boundingRect = element.getBoundingClientRect();
-      if (boundingRect.top < window.innerHeight * 0.85) {
-        element.classList.add('active');
-      }
-    });
-  }, []);
+    // Only run this effect after the page has loaded
+    if (!isPageLoading) {
+      // Trigger animation for elements already in view
+      const scrollingElements = document.querySelectorAll('.scrolling-animation');
+      
+      scrollingElements.forEach(element => {
+        const boundingRect = element.getBoundingClientRect();
+        if (boundingRect.top < window.innerHeight * 0.85) {
+          element.classList.add('active');
+        }
+      });
+    }
+  }, [isPageLoading]);
   
   return (
-    <div className="bg-black text-white overflow-x-hidden">
-      <Header />
-      <HeroSection />
-      <IntroSection />
-      <ToolsSection />
-      <WorkflowSection />
-      <BenefitsSection />
-      <DemoSection />
-      <FutureSection />
-      <Footer />
+    <>
+      <LoadingScreen isLoading={isPageLoading} />
       
-      {isLoading && (
-        <div className="infinity-loader"></div>
+      {!isPageLoading && (
+        <div className="bg-black text-white overflow-x-hidden">
+          <Header />
+          <HeroSection />
+          <IntroSection />
+          <ToolsSection />
+          <WorkflowSection />
+          <BenefitsSection />
+          <DemoSection />
+          <FutureSection />
+          <Footer />
+          
+          {isInfiniteLoading && (
+            <div className="infinity-loader"></div>
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 }
