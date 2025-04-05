@@ -69,8 +69,8 @@ export default function ToolsSection() {
                       <div className="flex w-full h-full">
                         <div className="flex-1 overflow-hidden border-r border-zinc-800/50">
                           <img 
-                            src="/images/film/scene1.jpg" 
-                            alt="Film scene 1" 
+                            src="/images/film/scene5.jpg" 
+                            alt="Atmospheric film scene" 
                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                           />
                         </div>
