@@ -64,19 +64,11 @@ export default function ToolsSection() {
                     </div>
                   </div>
                   
-                  <div className="rounded-xl overflow-hidden bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 shadow-xl mb-6">
-                    <AspectRatio ratio={16/9}>
-                      <div className="w-full h-full">
-                        <div className="w-full h-full overflow-hidden">
-                          <img 
-                            src="/images/film/character-progression.jpg" 
-                            alt="Character progression showcase" 
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                      </div>
-                    </AspectRatio>
-                  </div>
+                  <AspectRatio ratio={16/9} className="rounded-xl overflow-hidden bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 shadow-xl mb-6">
+                    <div className="flex items-center justify-center h-full p-6 text-center">
+                      <p className="text-gray-400">{tool.demoText}</p>
+                    </div>
+                  </AspectRatio>
                   
                   <a 
                     href={tool.learnMoreLink} 
