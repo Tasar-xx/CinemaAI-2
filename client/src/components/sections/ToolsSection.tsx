@@ -67,26 +67,33 @@ export default function ToolsSection() {
                   <div className="rounded-xl overflow-hidden bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 shadow-xl mb-6">
                     <AspectRatio ratio={16/9}>
                       <div className="flex w-full h-full">
-                        {/* 4 placeholder frames for future images */}
-                        <div className="flex-1 overflow-hidden border-r border-zinc-800">
-                          <div className="w-full h-full flex items-center justify-center bg-zinc-900">
-                            <p className="text-xs text-gray-500">Scene 1</p>
-                          </div>
+                        <div className="flex-1 overflow-hidden border-r border-zinc-800/50">
+                          <img 
+                            src="/images/film/scene1.jpg" 
+                            alt="Film scene 1" 
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                          />
                         </div>
-                        <div className="flex-1 overflow-hidden border-r border-zinc-800">
-                          <div className="w-full h-full flex items-center justify-center bg-zinc-900">
-                            <p className="text-xs text-gray-500">Scene 2</p>
-                          </div>
+                        <div className="flex-1 overflow-hidden border-r border-zinc-800/50">
+                          <img 
+                            src="/images/film/scene2.jpg" 
+                            alt="Film scene 2" 
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                          />
                         </div>
-                        <div className="flex-1 overflow-hidden border-r border-zinc-800">
-                          <div className="w-full h-full flex items-center justify-center bg-zinc-900">
-                            <p className="text-xs text-gray-500">Scene 3</p>
-                          </div>
+                        <div className="flex-1 overflow-hidden border-r border-zinc-800/50">
+                          <img 
+                            src="/images/film/scene3.jpg" 
+                            alt="Film scene 3" 
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                          />
                         </div>
                         <div className="flex-1 overflow-hidden">
-                          <div className="w-full h-full flex items-center justify-center bg-zinc-900">
-                            <p className="text-xs text-gray-500">Scene 4</p>
-                          </div>
+                          <img 
+                            src="/images/film/scene4.jpg" 
+                            alt="Film scene 4" 
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                          />
                         </div>
                       </div>
                     </AspectRatio>
