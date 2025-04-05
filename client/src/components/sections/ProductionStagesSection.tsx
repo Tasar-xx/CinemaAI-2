@@ -6,6 +6,13 @@ import { cn } from '@/lib/utils';
 import { fadeInUp, staggerChildren } from '@/lib/animation';
 import ReflectiveSurface from '@/components/ui/ReflectiveSurface';
 import ScrollAnimation from '@/components/ui/ScrollAnimation';
+import ImageLoader from '@/components/ui/ImageLoader';
+
+// Import our local images
+import heroImage from '@assets/Untitled design_20250405_175152_0000.png';
+import conceptArtImage from '@assets/Screenshot_20250405-033310.jpg';
+import lookDevImage from '@assets/Screenshot_20250405-033344.png';
+import characterDevImage from '@assets/Screenshot_20250405-033344~2.jpg';
 
 interface ProductionStage {
   id: string;
@@ -27,7 +34,7 @@ export default function ProductionStagesSection() {
       icon: <FileText className="h-8 w-8" />,
       category: 'Pre-Production',
       description: 'Our AI analyzes your script to identify weak points in character development, plot holes, and pacing issues. You can experiment with different scenarios and see how they affect the overall narrative flow.',
-      imageUrl: 'https://images.unsplash.com/photo-1518930259204-29c80c9a6d9d?q=80&w=2369&auto=format&fit=crop'
+      imageUrl: heroImage
     },
     {
       id: 'storyboarding',
@@ -35,7 +42,7 @@ export default function ProductionStagesSection() {
       icon: <FileText className="h-8 w-8" />,
       category: 'Pre-Production',
       description: 'Generate detailed storyboards from your script with our AI visualization tool. Quickly iterate through different visual interpretations of scenes to find the perfect framing.',
-      imageUrl: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2359&auto=format&fit=crop'
+      imageUrl: conceptArtImage
     },
     {
       id: 'location-scouting',
@@ -43,7 +50,7 @@ export default function ProductionStagesSection() {
       icon: <MapPin className="h-8 w-8" />,
       category: 'Pre-Production',
       description: 'Find the perfect location for your scenes with AI-powered location matching. Search vast databases of locations and preview your scenes in different settings.',
-      imageUrl: 'https://images.unsplash.com/photo-1518156677180-95a2893f3499?q=80&w=2370&auto=format&fit=crop'
+      imageUrl: lookDevImage
     },
     {
       id: 'concept-art',
@@ -51,7 +58,7 @@ export default function ProductionStagesSection() {
       icon: <Palette className="h-8 w-8" />,
       category: 'Pre-Production',
       description: "Generate stunning concept art for your production with AI. Explore different visual styles, lighting conditions, and color palettes to establish your film's visual identity.",
-      imageUrl: 'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=2374&auto=format&fit=crop'
+      imageUrl: characterDevImage
     },
     {
       id: 'costume-design',
@@ -59,7 +66,7 @@ export default function ProductionStagesSection() {
       icon: <Shirt className="h-8 w-8" />,
       category: 'Pre-Production',
       description: 'Create detailed costume designs tailored to your characters and setting. Our AI analyzes your script to suggest historically accurate or creatively appropriate wardrobe choices.',
-      imageUrl: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=2188&auto=format&fit=crop'
+      imageUrl: conceptArtImage
     },
     {
       id: 'camera-lensing',
@@ -67,7 +74,7 @@ export default function ProductionStagesSection() {
       icon: <Camera className="h-8 w-8" />,
       category: 'Pre-Production',
       description: 'Experiment with different camera and lens options before shooting. Preview how your scenes will look with various focal lengths, aspect ratios, and camera movements.',
-      imageUrl: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2384&auto=format&fit=crop'
+      imageUrl: lookDevImage
     },
     // Production Row 2
     {
@@ -76,7 +83,7 @@ export default function ProductionStagesSection() {
       icon: <Users className="h-8 w-8" />,
       category: 'Production',
       description: "Plan your actors' movements with AI-powered blocking tools. Visualize complex scenes and camera movements before getting on set to maximize shooting efficiency.",
-      imageUrl: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=2300&auto=format&fit=crop'
+      imageUrl: characterDevImage
     },
     {
       id: 'set-design',
@@ -84,7 +91,7 @@ export default function ProductionStagesSection() {
       icon: <Grid className="h-8 w-8" />,
       category: 'Production',
       description: 'Design and modify sets virtually before construction. Test different layouts, lighting setups, and decorative elements to find the perfect setting for your scenes.',
-      imageUrl: 'https://images.unsplash.com/photo-1598899150498-25fb872ae8ed?q=80&w=2370&auto=format&fit=crop'
+      imageUrl: heroImage
     },
     {
       id: 'lighting-simulation',
@@ -92,7 +99,7 @@ export default function ProductionStagesSection() {
       icon: <Lightbulb className="h-8 w-8" />,
       category: 'Production',
       description: 'Simulate complex lighting setups with AI. Preview different lighting conditions and determine the optimal equipment needed before stepping on set.',
-      imageUrl: 'https://images.unsplash.com/photo-1576153192621-7a3be10b356e?q=80&w=2374&auto=format&fit=crop'
+      imageUrl: lookDevImage
     },
     {
       id: 'motion-capture',
@@ -100,7 +107,7 @@ export default function ProductionStagesSection() {
       icon: <Video className="h-8 w-8" />,
       category: 'Production',
       description: 'Capture realistic motion data using AI-powered computer vision. Turn standard video footage into detailed motion capture data without specialized equipment.',
-      imageUrl: 'https://images.unsplash.com/photo-1551184451-76b792bd1b2d?q=80&w=2370&auto=format&fit=crop'
+      imageUrl: characterDevImage
     },
     {
       id: 'relighting',
@@ -108,7 +115,7 @@ export default function ProductionStagesSection() {
       icon: <RefreshCcw className="h-8 w-8" />,
       category: 'Post-Production',
       description: 'Change the lighting of footage in post-production with AI-powered relighting tools. Correct lighting issues or completely transform the mood of a scene.',
-      imageUrl: 'https://images.unsplash.com/photo-1533228876829-65c94e7b5025?q=80&w=2370&auto=format&fit=crop'
+      imageUrl: lookDevImage
     },
     {
       id: 'sound-reformer',
@@ -116,7 +123,7 @@ export default function ProductionStagesSection() {
       icon: <Volume2 className="h-8 w-8" />,
       category: 'Post-Production',
       description: 'Clean and enhance audio with our AI sound reformer. Remove background noise, improve clarity, and create immersive soundscapes with minimal effort.',
-      imageUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2370&auto=format&fit=crop'
+      imageUrl: heroImage
     },
     {
       id: 'dialogue-change',
@@ -124,7 +131,7 @@ export default function ProductionStagesSection() {
       icon: <MessageSquare className="h-8 w-8" />,
       category: 'Post-Production',
       description: "Modify dialogue in post-production with our AI voice synthesis. Change lines without re-shoots by generating natural-sounding dialogue that matches your actors' voices.",
-      imageUrl: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=2560&auto=format&fit=crop'
+      imageUrl: conceptArtImage
     },
     // Additional item for Post-Production row
     {
@@ -133,7 +140,7 @@ export default function ProductionStagesSection() {
       icon: <Box className="h-8 w-8" />,
       category: 'Post-Production',
       description: 'Create realistic physical simulations for special effects. Our AI physics engine can generate convincing natural phenomena like water, fire, and destruction.',
-      imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2674&auto=format&fit=crop'
+      imageUrl: characterDevImage
     },
   ];
 
@@ -244,9 +251,8 @@ export default function ProductionStagesSection() {
               </div>
               <div className="md:w-1/2">
                 <div className="aspect-video rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
-                  <img 
+                  <ImageLoader 
                     src={activeStage.imageUrl} 
-                    alt={activeStage.title}
                     className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
                   />
                 </div>

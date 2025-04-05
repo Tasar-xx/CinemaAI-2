@@ -1,6 +1,7 @@
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import ScrollAnimation from '@/components/ui/ScrollAnimation';
 import ReflectiveSurface from '@/components/ui/ReflectiveSurface';
+import ImageLoader from '@/components/ui/ImageLoader';
 import { benefits } from '@/data/benefits';
 
 export default function BenefitsSection() {
@@ -20,9 +21,10 @@ export default function BenefitsSection() {
               <h3 className="text-2xl font-bold mb-6 text-white">{benefit.title}</h3>
               <ReflectiveSurface className="rounded-xl overflow-hidden mb-6">
                 <AspectRatio ratio={16/9} className="bg-[#2C2C2E]">
-                  <div className="flex items-center justify-center h-full">
-                    <p className="text-sm text-gray-500">{benefit.image}</p>
-                  </div>
+                  <ImageLoader 
+                    className="w-full h-full" 
+                    src={benefit.imageUrl}
+                  />
                 </AspectRatio>
               </ReflectiveSurface>
               <p className="text-gray-300 mb-4">
