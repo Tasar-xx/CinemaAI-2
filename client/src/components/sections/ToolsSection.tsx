@@ -69,8 +69,8 @@ export default function ToolsSection() {
                       <div className="w-full h-full">
                         <div className="w-full h-full overflow-hidden">
                           <img 
-                            src="/images/film/scene5.jpg" 
-                            alt="Atmospheric film scene" 
+                            src="/images/film/character-progression.jpg" 
+                            alt="Character progression showcase" 
                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                           />
                         </div>
