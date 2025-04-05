@@ -14,6 +14,7 @@ import heroImage from '@assets/Untitled design_20250405_175152_0000.png';
 import conceptArtImage from '@assets/Screenshot_20250405-033310.jpg';
 import lookDevImage from '@assets/Screenshot_20250405-033344.png';
 import characterDevImage from '@assets/Screenshot_20250405-033344~2.jpg';
+import modelsImage from '@assets/20250405_185028_0000.png';
 
 interface ProductionStage {
   id: string;
@@ -142,7 +143,7 @@ export default function ProductionStagesSection() {
       icon: <Box className="h-8 w-8" />,
       category: 'Post-Production',
       description: 'Create realistic physical simulations for special effects. Our AI physics engine can generate convincing natural phenomena like water, fire, and destruction.',
-      imageUrl: conceptArtImage
+      imageUrl: modelsImage
     },
   ];
 

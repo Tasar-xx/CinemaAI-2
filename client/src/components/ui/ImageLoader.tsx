@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import heroImage from '@assets/Untitled design_20250405_175152_0000.png';
+import modelsImage from '@assets/20250405_185028_0000.png';
 
 interface ImageLoaderProps {
   className?: string;
