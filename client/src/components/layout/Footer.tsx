@@ -11,7 +11,7 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-xl font-bold text-white mb-4">FilmAI</h3>
+            <h3 className="text-xl font-bold text-white mb-4">Qlab AI</h3>
             <p className="text-gray-400 mb-4">
               The future of filmmaking is here. AI-powered tools for every stage of production.
             </p>
