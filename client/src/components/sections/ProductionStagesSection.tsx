@@ -7,6 +7,7 @@ import { fadeInUp, staggerChildren } from '@/lib/animation';
 import ReflectiveSurface from '@/components/ui/ReflectiveSurface';
 import ScrollAnimation from '@/components/ui/ScrollAnimation';
 import ImageLoader from '@/components/ui/ImageLoader';
+import PatternImage from '@/lib/svgPatterns';
 
 // Import our local images
 import heroImage from '@assets/Untitled design_20250405_175152_0000.png';
@@ -20,7 +21,8 @@ interface ProductionStage {
   icon: React.ReactNode;
   category: string;
   description: string;
-  imageUrl: string;
+  imageUrl?: string;
+  patternType?: 'grid' | 'circuit' | 'wave' | 'dots' | 'hexagon' | 'triangle' | 'neural' | 'film' | 'data' | 'random';
 }
 
 export default function ProductionStagesSection() {
@@ -42,7 +44,7 @@ export default function ProductionStagesSection() {
       icon: <FileText className="h-8 w-8" />,
       category: 'Pre-Production',
       description: 'Generate detailed storyboards from your script with our AI visualization tool. Quickly iterate through different visual interpretations of scenes to find the perfect framing.',
-      imageUrl: conceptArtImage
+      patternType: 'grid'
     },
     {
       id: 'location-scouting',
@@ -50,7 +52,7 @@ export default function ProductionStagesSection() {
       icon: <MapPin className="h-8 w-8" />,
       category: 'Pre-Production',
       description: 'Find the perfect location for your scenes with AI-powered location matching. Search vast databases of locations and preview your scenes in different settings.',
-      imageUrl: lookDevImage
+      patternType: 'wave'
     },
     {
       id: 'concept-art',
@@ -66,7 +68,7 @@ export default function ProductionStagesSection() {
       icon: <Shirt className="h-8 w-8" />,
       category: 'Pre-Production',
       description: 'Create detailed costume designs tailored to your characters and setting. Our AI analyzes your script to suggest historically accurate or creatively appropriate wardrobe choices.',
-      imageUrl: conceptArtImage
+      patternType: 'hexagon'
     },
     {
       id: 'camera-lensing',
@@ -74,7 +76,7 @@ export default function ProductionStagesSection() {
       icon: <Camera className="h-8 w-8" />,
       category: 'Pre-Production',
       description: 'Experiment with different camera and lens options before shooting. Preview how your scenes will look with various focal lengths, aspect ratios, and camera movements.',
-      imageUrl: lookDevImage
+      patternType: 'film'
     },
     // Production Row 2
     {
@@ -83,7 +85,7 @@ export default function ProductionStagesSection() {
       icon: <Users className="h-8 w-8" />,
       category: 'Production',
       description: "Plan your actors' movements with AI-powered blocking tools. Visualize complex scenes and camera movements before getting on set to maximize shooting efficiency.",
-      imageUrl: characterDevImage
+      patternType: 'dots'
     },
     {
       id: 'set-design',
@@ -91,7 +93,7 @@ export default function ProductionStagesSection() {
       icon: <Grid className="h-8 w-8" />,
       category: 'Production',
       description: 'Design and modify sets virtually before construction. Test different layouts, lighting setups, and decorative elements to find the perfect setting for your scenes.',
-      imageUrl: heroImage
+      patternType: 'neural'
     },
     {
       id: 'lighting-simulation',
@@ -107,7 +109,7 @@ export default function ProductionStagesSection() {
       icon: <Video className="h-8 w-8" />,
       category: 'Production',
       description: 'Capture realistic motion data using AI-powered computer vision. Turn standard video footage into detailed motion capture data without specialized equipment.',
-      imageUrl: characterDevImage
+      patternType: 'circuit'
     },
     {
       id: 'relighting',
@@ -115,7 +117,7 @@ export default function ProductionStagesSection() {
       icon: <RefreshCcw className="h-8 w-8" />,
       category: 'Post-Production',
       description: 'Change the lighting of footage in post-production with AI-powered relighting tools. Correct lighting issues or completely transform the mood of a scene.',
-      imageUrl: lookDevImage
+      patternType: 'data'
     },
     {
       id: 'sound-reformer',
@@ -123,7 +125,7 @@ export default function ProductionStagesSection() {
       icon: <Volume2 className="h-8 w-8" />,
       category: 'Post-Production',
       description: 'Clean and enhance audio with our AI sound reformer. Remove background noise, improve clarity, and create immersive soundscapes with minimal effort.',
-      imageUrl: heroImage
+      patternType: 'wave'
     },
     {
       id: 'dialogue-change',
@@ -131,7 +133,7 @@ export default function ProductionStagesSection() {
       icon: <MessageSquare className="h-8 w-8" />,
       category: 'Post-Production',
       description: "Modify dialogue in post-production with our AI voice synthesis. Change lines without re-shoots by generating natural-sounding dialogue that matches your actors' voices.",
-      imageUrl: conceptArtImage
+      patternType: 'triangle'
     },
     // Additional item for Post-Production row
     {
@@ -140,7 +142,7 @@ export default function ProductionStagesSection() {
       icon: <Box className="h-8 w-8" />,
       category: 'Post-Production',
       description: 'Create realistic physical simulations for special effects. Our AI physics engine can generate convincing natural phenomena like water, fire, and destruction.',
-      imageUrl: characterDevImage
+      imageUrl: conceptArtImage
     },
   ];
 
@@ -251,10 +253,19 @@ export default function ProductionStagesSection() {
               </div>
               <div className="md:w-1/2">
                 <div className="aspect-video rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
-                  <ImageLoader 
-                    src={activeStage.imageUrl} 
-                    className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
-                  />
+                  {activeStage.imageUrl ? (
+                    <ImageLoader 
+                      src={activeStage.imageUrl} 
+                      className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
+                    />
+                  ) : (
+                    <PatternImage 
+                      patternType={activeStage.patternType || 'random'} 
+                      className="w-full h-full opacity-80 hover:opacity-100 transition-opacity"
+                      primaryColor={`hsl(${Math.floor(Math.random() * 360)}, 70%, 50%)`}
+                      secondaryColor={`hsl(${Math.floor(Math.random() * 360)}, 70%, 60%)`}
+                    />
+                  )}
                 </div>
               </div>
             </div>
