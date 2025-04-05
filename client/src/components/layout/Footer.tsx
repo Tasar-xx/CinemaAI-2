@@ -18,7 +18,7 @@ export default function Footer() {
         </motion.div>
         
         <motion.div 
-          className="mt-16 py-8 rounded-2xl bg-gradient-to-r from-gray-900 to-gray-800 text-center px-6"
+          className="mt-16 py-8 rounded-2xl bg-[#717171] text-center px-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
