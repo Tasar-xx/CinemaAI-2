@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import ScrollAnimation from '@/components/ui/ScrollAnimation';
 import ReflectiveSurface from '@/components/ui/ReflectiveSurface';
-import ImageLoader from '@/components/ui/ImageLoader';
 import { tools, Tool } from '@/data/tools';
 import { cn } from '@/lib/utils';
 import { fadeInUp } from '@/lib/animation';
@@ -66,7 +65,15 @@ export default function ToolsSection() {
                   </div>
                   
                   <AspectRatio ratio={16/9} className="rounded-xl overflow-hidden bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 shadow-xl mb-6">
-                    <ImageLoader className="w-full h-full" />
+                    {tool.imageUrl && (
+                      <div 
+                        className="w-full h-full bg-cover bg-center" 
+                        style={{ 
+                          backgroundImage: `url(${tool.imageUrl})`,
+                          backgroundSize: 'cover'
+                        }}
+                      />
+                    )}
                   </AspectRatio>
                   
                   <a 
