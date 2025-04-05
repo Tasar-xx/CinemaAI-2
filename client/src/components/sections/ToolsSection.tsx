@@ -66,32 +66,11 @@ export default function ToolsSection() {
                   
                   <div className="rounded-xl overflow-hidden bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 shadow-xl mb-6">
                     <AspectRatio ratio={16/9}>
-                      <div className="flex w-full h-full">
-                        <div className="flex-1 overflow-hidden border-r border-zinc-800/50">
+                      <div className="w-full h-full">
+                        <div className="w-full h-full overflow-hidden">
                           <img 
                             src="/images/film/scene5.jpg" 
                             alt="Atmospheric film scene" 
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                        <div className="flex-1 overflow-hidden border-r border-zinc-800/50">
-                          <img 
-                            src="/images/film/scene2.jpg" 
-                            alt="Film scene 2" 
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                        <div className="flex-1 overflow-hidden border-r border-zinc-800/50">
-                          <img 
-                            src="/images/film/scene3.jpg" 
-                            alt="Film scene 3" 
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                        <div className="flex-1 overflow-hidden">
-                          <img 
-                            src="/images/film/scene4.jpg" 
-                            alt="Film scene 4" 
                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                           />
                         </div>
