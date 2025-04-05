@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import ScrollAnimation from '@/components/ui/ScrollAnimation';
 import heroImage from '@assets/Untitled design_20250405_175152_0000.png';
+import femaleGroupImage from '@assets/IMG-20250405-WA0001.jpg';
 
 export default function HeroSection() {
   const controls = useAnimation();
@@ -18,7 +19,7 @@ export default function HeroSection() {
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-black to-[#1A1A1A] py-20 mt-16">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial from-[#2C2C2E] to-black opacity-70"></div>
-        <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: `url(${heroImage})` }}></div>
+        <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: `url(${femaleGroupImage})` }}></div>
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

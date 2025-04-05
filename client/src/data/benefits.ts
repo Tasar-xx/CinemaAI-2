@@ -1,7 +1,8 @@
-import heroImage from '@assets/Untitled design_20250405_175152_0000.png';
-import conceptArtImage from '@assets/Screenshot_20250405-033310.jpg';
-import lookDevImage from '@assets/Screenshot_20250405-033344.png';
-import characterDevImage from '@assets/Screenshot_20250405-033344~2.jpg';
+// Import unique images for benefits
+import foggyWomanImage from '@assets/IMG-20250405-WA0005.jpg'; // Woman in fog
+import rainbowSweaterImage from '@assets/IMG-20250405-WA0047.jpg'; // Person in rainbow sweater
+import casualWhiteShirtImage from '@assets/IMG-20250405-WA0052.jpg'; // Person in casual white t-shirt
+import dreadsImage from '@assets/IMG-20250405-WA0056.jpg'; // Person with dreadlocks
 
 export interface Benefit {
   id: string;
@@ -18,7 +19,7 @@ export const benefits: Benefit[] = [
     title: "Psychological Impact",
     description: "Writing has always been a way to manifest words—now we can manifest words directly into images and ideas, creating a seamless bridge between imagination and visualization.",
     image: "Creative visualization demo",
-    imageUrl: heroImage,
+    imageUrl: foggyWomanImage, // Woman in fog
     points: [
       "Immediate visual feedback on creative decisions",
       "Reduced cognitive load when translating concepts to visuals",
@@ -30,7 +31,7 @@ export const benefits: Benefit[] = [
     title: "Production Efficiency",
     description: "What used to take days of back-and-forth communication can now be accomplished in a single afternoon, with all key stakeholders able to contribute to the iterative process simultaneously.",
     image: "Production efficiency visualization",
-    imageUrl: conceptArtImage,
+    imageUrl: rainbowSweaterImage, // Person in rainbow sweater
     points: [
       "50+ iterations possible in a single collaborative session",
       "Lower production budgets through precise previsualization",
@@ -42,7 +43,7 @@ export const benefits: Benefit[] = [
     title: "Creative Control",
     description: "Directors can now visualize their exact vision independently, then share these specific visual concepts with their teams to ensure everyone is aligned before production begins.",
     image: "Creative control visualization",
-    imageUrl: lookDevImage,
+    imageUrl: casualWhiteShirtImage, // Person in casual white t-shirt
     points: [
       "Enhanced director-team communication",
       "Artistic vision preserved throughout production",
@@ -54,7 +55,7 @@ export const benefits: Benefit[] = [
     title: "Future Innovations",
     description: "AI filmmaking technology is improving every day, with new capabilities constantly being developed and integrated into our platform.",
     image: "Future technology visualization",
-    imageUrl: characterDevImage,
+    imageUrl: dreadsImage, // Person with dreadlocks
     points: [
       "Advanced physics engines for realistic simulations",
       "Next-generation 4D gaussian splatting technology",

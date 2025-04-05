@@ -10,11 +10,16 @@ import ImageLoader from '@/components/ui/ImageLoader';
 import PatternImage from '@/lib/svgPatterns';
 
 // Import our local images
-import heroImage from '@assets/Untitled design_20250405_175152_0000.png';
-import conceptArtImage from '@assets/Screenshot_20250405-033310.jpg';
-import lookDevImage from '@assets/Screenshot_20250405-033344.png';
-import characterDevImage from '@assets/Screenshot_20250405-033344~2.jpg';
-import modelsImage from '@assets/20250405_185028_0000.png';
+import womansLegsImage from '@assets/IMG-20250405-WA0015.jpg';
+import womansGroundImage from '@assets/IMG-20250405-WA0016.jpg';
+import womansDressImage from '@assets/IMG-20250405-WA0001.jpg';
+import womansWithTeethImage from '@assets/IMG-20250405-WA0002.jpg';
+import womansJeansChatImage from '@assets/IMG-20250405-WA0003.jpg';
+import womansLookingUpImage from '@assets/IMG-20250405-WA0009.jpg';
+import womansPurpleTeethImage from '@assets/IMG-20250405-WA0019.jpg';
+import womansRedImage from '@assets/IMG-20250405-WA0010.jpg';
+import womansDarkImage from '@assets/IMG-20250405-WA0011.jpg';
+import groupModelsImage from '@assets/20250405_185028_0000.png';
 
 interface ProductionStage {
   id: string;
@@ -37,7 +42,7 @@ export default function ProductionStagesSection() {
       icon: <FileText className="h-8 w-8" />,
       category: 'Pre-Production',
       description: 'Our AI analyzes your script to identify weak points in character development, plot holes, and pacing issues. You can experiment with different scenarios and see how they affect the overall narrative flow.',
-      imageUrl: heroImage
+      imageUrl: womansLegsImage
     },
     {
       id: 'storyboarding',
@@ -45,7 +50,7 @@ export default function ProductionStagesSection() {
       icon: <FileText className="h-8 w-8" />,
       category: 'Pre-Production',
       description: 'Generate detailed storyboards from your script with our AI visualization tool. Quickly iterate through different visual interpretations of scenes to find the perfect framing.',
-      patternType: 'grid'
+      imageUrl: womansRedImage
     },
     {
       id: 'location-scouting',
@@ -61,7 +66,7 @@ export default function ProductionStagesSection() {
       icon: <Palette className="h-8 w-8" />,
       category: 'Pre-Production',
       description: "Generate stunning concept art for your production with AI. Explore different visual styles, lighting conditions, and color palettes to establish your film's visual identity.",
-      imageUrl: characterDevImage
+      imageUrl: womansGroundImage
     },
     {
       id: 'costume-design',
@@ -86,7 +91,7 @@ export default function ProductionStagesSection() {
       icon: <Users className="h-8 w-8" />,
       category: 'Production',
       description: "Plan your actors' movements with AI-powered blocking tools. Visualize complex scenes and camera movements before getting on set to maximize shooting efficiency.",
-      patternType: 'dots'
+      imageUrl: womansWithTeethImage
     },
     {
       id: 'set-design',
@@ -94,7 +99,7 @@ export default function ProductionStagesSection() {
       icon: <Grid className="h-8 w-8" />,
       category: 'Production',
       description: 'Design and modify sets virtually before construction. Test different layouts, lighting setups, and decorative elements to find the perfect setting for your scenes.',
-      patternType: 'neural'
+      imageUrl: groupModelsImage
     },
     {
       id: 'lighting-simulation',
@@ -102,7 +107,7 @@ export default function ProductionStagesSection() {
       icon: <Lightbulb className="h-8 w-8" />,
       category: 'Production',
       description: 'Simulate complex lighting setups with AI. Preview different lighting conditions and determine the optimal equipment needed before stepping on set.',
-      imageUrl: lookDevImage
+      imageUrl: womansDressImage
     },
     {
       id: 'motion-capture',
@@ -110,7 +115,7 @@ export default function ProductionStagesSection() {
       icon: <Video className="h-8 w-8" />,
       category: 'Production',
       description: 'Capture realistic motion data using AI-powered computer vision. Turn standard video footage into detailed motion capture data without specialized equipment.',
-      patternType: 'circuit'
+      imageUrl: womansDarkImage
     },
     {
       id: 'relighting',
@@ -118,7 +123,7 @@ export default function ProductionStagesSection() {
       icon: <RefreshCcw className="h-8 w-8" />,
       category: 'Post-Production',
       description: 'Change the lighting of footage in post-production with AI-powered relighting tools. Correct lighting issues or completely transform the mood of a scene.',
-      patternType: 'data'
+      imageUrl: womansPurpleTeethImage
     },
     {
       id: 'sound-reformer',
@@ -134,7 +139,7 @@ export default function ProductionStagesSection() {
       icon: <MessageSquare className="h-8 w-8" />,
       category: 'Post-Production',
       description: "Modify dialogue in post-production with our AI voice synthesis. Change lines without re-shoots by generating natural-sounding dialogue that matches your actors' voices.",
-      patternType: 'triangle'
+      imageUrl: womansJeansChatImage
     },
     // Additional item for Post-Production row
     {
@@ -143,7 +148,7 @@ export default function ProductionStagesSection() {
       icon: <Box className="h-8 w-8" />,
       category: 'Post-Production',
       description: 'Create realistic physical simulations for special effects. Our AI physics engine can generate convincing natural phenomena like water, fire, and destruction.',
-      imageUrl: modelsImage
+      imageUrl: womansLookingUpImage
     },
   ];
 
