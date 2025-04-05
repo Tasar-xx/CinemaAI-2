@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import { ReactNode } from "react";
+import { motion } from "framer-motion";
 
 interface ReflectiveSurfaceProps {
   children: ReactNode;
@@ -9,16 +9,16 @@ interface ReflectiveSurfaceProps {
 
 export default function ReflectiveSurface({
   children,
-  className = '',
+  className = "",
   hoverEffect = false,
 }: ReflectiveSurfaceProps) {
   const hoverVariants = hoverEffect
     ? {
         hover: {
           y: -5,
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)',
+          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.3)",
           transition: {
-            type: 'spring',
+            type: "spring",
             stiffness: 500,
           },
         },
@@ -30,9 +30,9 @@ export default function ReflectiveSurface({
       className={`reflective-surface ${className}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-100px' }}
+      viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.5 }}
-      whileHover={hoverEffect ? 'hover' : undefined}
+      whileHover={hoverEffect ? "hover" : undefined}
       variants={hoverVariants}
     >
       {children}

@@ -1,25 +1,39 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Camera, FileText, MapPin, Palette, Shirt, Users, Grid, Lightbulb, Video, RefreshCcw, Volume2, MessageSquare, Box } from 'lucide-react';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { cn } from '@/lib/utils';
-import { fadeInUp, staggerChildren } from '@/lib/animation';
-import ReflectiveSurface from '@/components/ui/ReflectiveSurface';
-import ScrollAnimation from '@/components/ui/ScrollAnimation';
-import ImageLoader from '@/components/ui/ImageLoader';
-import PatternImage from '@/lib/svgPatterns';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Camera,
+  FileText,
+  MapPin,
+  Palette,
+  Shirt,
+  Users,
+  Grid,
+  Lightbulb,
+  Video,
+  RefreshCcw,
+  Volume2,
+  MessageSquare,
+  Box,
+} from "lucide-react";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
+import { fadeInUp, staggerChildren } from "@/lib/animation";
+import ReflectiveSurface from "@/components/ui/ReflectiveSurface";
+import ScrollAnimation from "@/components/ui/ScrollAnimation";
+import ImageLoader from "@/components/ui/ImageLoader";
+import PatternImage from "@/lib/svgPatterns";
 
 // Import our local images
-import womansLegsImage from '@assets/IMG-20250405-WA0015.jpg';
-import womansGroundImage from '@assets/IMG-20250405-WA0016.jpg';
-import womansDressImage from '@assets/IMG-20250405-WA0001.jpg';
-import womansWithTeethImage from '@assets/IMG-20250405-WA0002.jpg';
-import womansJeansChatImage from '@assets/IMG-20250405-WA0003.jpg';
-import womansLookingUpImage from '@assets/IMG-20250405-WA0009.jpg';
-import womansPurpleTeethImage from '@assets/IMG-20250405-WA0019.jpg';
-import womansRedImage from '@assets/IMG-20250405-WA0010.jpg';
-import womansDarkImage from '@assets/IMG-20250405-WA0011.jpg';
-import groupModelsImage from '@assets/20250405_185028_0000.png';
+import womansLegsImage from "@assets/IMG-20250405-WA0015.jpg";
+import womansGroundImage from "@assets/IMG-20250405-WA0016.jpg";
+import womansDressImage from "@assets/IMG-20250405-WA0001.jpg";
+import womansWithTeethImage from "@assets/IMG-20250405-WA0002.jpg";
+import womansJeansChatImage from "@assets/IMG-20250405-WA0003.jpg";
+import womansLookingUpImage from "@assets/IMG-20250405-WA0009.jpg";
+import womansPurpleTeethImage from "@assets/IMG-20250405-WA0019.jpg";
+import womansRedImage from "@assets/IMG-20250405-WA0010.jpg";
+import womansDarkImage from "@assets/IMG-20250405-WA0011.jpg";
+import groupModelsImage from "@assets/20250405_185028_0000.png";
 
 interface ProductionStage {
   id: string;
@@ -28,141 +42,174 @@ interface ProductionStage {
   category: string;
   description: string;
   imageUrl?: string;
-  patternType?: 'grid' | 'circuit' | 'wave' | 'dots' | 'hexagon' | 'triangle' | 'neural' | 'film' | 'data' | 'random';
+  patternType?:
+    | "grid"
+    | "circuit"
+    | "wave"
+    | "dots"
+    | "hexagon"
+    | "triangle"
+    | "neural"
+    | "film"
+    | "data"
+    | "random";
 }
 
 export default function ProductionStagesSection() {
-  const [activeTab, setActiveTab] = useState('script-development');
+  const [activeTab, setActiveTab] = useState("script-development");
 
   const productionStages: ProductionStage[] = [
     // Pre-Production Row 1
     {
-      id: 'script-development',
-      title: 'Script Development',
+      id: "script-development",
+      title: "Script Development",
       icon: <FileText className="h-8 w-8" />,
-      category: 'Pre-Production',
-      description: 'Our AI analyzes your script to identify weak points in character development, plot holes, and pacing issues. You can experiment with different scenarios and see how they affect the overall narrative flow.',
-      imageUrl: womansLegsImage
+      category: "Pre-Production",
+      description:
+        "Our AI analyzes your script to identify weak points in character development, plot holes, and pacing issues. You can experiment with different scenarios and see how they affect the overall narrative flow.",
+      imageUrl: womansLegsImage,
     },
     {
-      id: 'storyboarding',
-      title: 'Storyboarding',
+      id: "storyboarding",
+      title: "Storyboarding",
       icon: <FileText className="h-8 w-8" />,
-      category: 'Pre-Production',
-      description: 'Generate detailed storyboards from your script with our AI visualization tool. Quickly iterate through different visual interpretations of scenes to find the perfect framing.',
-      imageUrl: womansRedImage
+      category: "Pre-Production",
+      description:
+        "Generate detailed storyboards from your script with our AI visualization tool. Quickly iterate through different visual interpretations of scenes to find the perfect framing.",
+      imageUrl: womansRedImage,
     },
     {
-      id: 'location-scouting',
-      title: 'Location Scouting',
+      id: "location-scouting",
+      title: "Location Scouting",
       icon: <MapPin className="h-8 w-8" />,
-      category: 'Pre-Production',
-      description: 'Find the perfect location for your scenes with AI-powered location matching. Search vast databases of locations and preview your scenes in different settings.',
-      patternType: 'wave'
+      category: "Pre-Production",
+      description:
+        "Find the perfect location for your scenes with AI-powered location matching. Search vast databases of locations and preview your scenes in different settings.",
+      patternType: "wave",
     },
     {
-      id: 'concept-art',
-      title: 'Concept Art',
+      id: "concept-art",
+      title: "Concept Art",
       icon: <Palette className="h-8 w-8" />,
-      category: 'Pre-Production',
-      description: "Generate stunning concept art for your production with AI. Explore different visual styles, lighting conditions, and color palettes to establish your film's visual identity.",
-      imageUrl: womansGroundImage
+      category: "Pre-Production",
+      description:
+        "Generate stunning concept art for your production with AI. Explore different visual styles, lighting conditions, and color palettes to establish your film's visual identity.",
+      imageUrl: womansGroundImage,
     },
     {
-      id: 'costume-design',
-      title: 'Costume Design',
+      id: "costume-design",
+      title: "Costume Design",
       icon: <Shirt className="h-8 w-8" />,
-      category: 'Pre-Production',
-      description: 'Create detailed costume designs tailored to your characters and setting. Our AI analyzes your script to suggest historically accurate or creatively appropriate wardrobe choices.',
-      patternType: 'hexagon'
+      category: "Pre-Production",
+      description:
+        "Create detailed costume designs tailored to your characters and setting. Our AI analyzes your script to suggest historically accurate or creatively appropriate wardrobe choices.",
+      patternType: "hexagon",
     },
     {
-      id: 'camera-lensing',
-      title: 'Camera Lensing',
+      id: "camera-lensing",
+      title: "Camera Lensing",
       icon: <Camera className="h-8 w-8" />,
-      category: 'Pre-Production',
-      description: 'Experiment with different camera and lens options before shooting. Preview how your scenes will look with various focal lengths, aspect ratios, and camera movements.',
-      patternType: 'film'
+      category: "Pre-Production",
+      description:
+        "Experiment with different camera and lens options before shooting. Preview how your scenes will look with various focal lengths, aspect ratios, and camera movements.",
+      patternType: "film",
     },
     // Production Row 2
     {
-      id: 'blocking-visualization',
-      title: 'Blocking Visualization',
+      id: "blocking-visualization",
+      title: "Blocking Visualization",
       icon: <Users className="h-8 w-8" />,
-      category: 'Production',
-      description: "Plan your actors' movements with AI-powered blocking tools. Visualize complex scenes and camera movements before getting on set to maximize shooting efficiency.",
-      imageUrl: womansWithTeethImage
+      category: "Production",
+      description:
+        "Plan your actors' movements with AI-powered blocking tools. Visualize complex scenes and camera movements before getting on set to maximize shooting efficiency.",
+      imageUrl: womansWithTeethImage,
     },
     {
-      id: 'set-design',
-      title: 'Set Design',
+      id: "set-design",
+      title: "Set Design",
       icon: <Grid className="h-8 w-8" />,
-      category: 'Production',
-      description: 'Design and modify sets virtually before construction. Test different layouts, lighting setups, and decorative elements to find the perfect setting for your scenes.',
-      imageUrl: groupModelsImage
+      category: "Production",
+      description:
+        "Design and modify sets virtually before construction. Test different layouts, lighting setups, and decorative elements to find the perfect setting for your scenes.",
+      imageUrl: groupModelsImage,
     },
     {
-      id: 'lighting-simulation',
-      title: 'Lighting Simulation',
+      id: "lighting-simulation",
+      title: "Lighting Simulation",
       icon: <Lightbulb className="h-8 w-8" />,
-      category: 'Production',
-      description: 'Simulate complex lighting setups with AI. Preview different lighting conditions and determine the optimal equipment needed before stepping on set.',
-      imageUrl: womansDressImage
+      category: "Production",
+      description:
+        "Simulate complex lighting setups with AI. Preview different lighting conditions and determine the optimal equipment needed before stepping on set.",
+      imageUrl: womansDressImage,
     },
     {
-      id: 'motion-capture',
-      title: 'Motion Capture',
+      id: "motion-capture",
+      title: "Motion Capture",
       icon: <Video className="h-8 w-8" />,
-      category: 'Production',
-      description: 'Capture realistic motion data using AI-powered computer vision. Turn standard video footage into detailed motion capture data without specialized equipment.',
-      imageUrl: womansDarkImage
+      category: "Production",
+      description:
+        "Capture realistic motion data using AI-powered computer vision. Turn standard video footage into detailed motion capture data without specialized equipment.",
+      imageUrl: womansDarkImage,
     },
     {
-      id: 'relighting',
-      title: 'Relighting',
+      id: "relighting",
+      title: "Relighting",
       icon: <RefreshCcw className="h-8 w-8" />,
-      category: 'Post-Production',
-      description: 'Change the lighting of footage in post-production with AI-powered relighting tools. Correct lighting issues or completely transform the mood of a scene.',
-      imageUrl: womansPurpleTeethImage
+      category: "Post-Production",
+      description:
+        "Change the lighting of footage in post-production with AI-powered relighting tools. Correct lighting issues or completely transform the mood of a scene.",
+      imageUrl: womansPurpleTeethImage,
     },
     {
-      id: 'sound-reformer',
-      title: 'Sound Reformer AI',
+      id: "sound-reformer",
+      title: "Sound Reformer AI",
       icon: <Volume2 className="h-8 w-8" />,
-      category: 'Post-Production',
-      description: 'Clean and enhance audio with our AI sound reformer. Remove background noise, improve clarity, and create immersive soundscapes with minimal effort.',
-      patternType: 'wave'
+      category: "Post-Production",
+      description:
+        "Clean and enhance audio with our AI sound reformer. Remove background noise, improve clarity, and create immersive soundscapes with minimal effort.",
+      patternType: "wave",
     },
     {
-      id: 'dialogue-change',
-      title: 'Dialogue Change',
+      id: "dialogue-change",
+      title: "Dialogue Change",
       icon: <MessageSquare className="h-8 w-8" />,
-      category: 'Post-Production',
-      description: "Modify dialogue in post-production with our AI voice synthesis. Change lines without re-shoots by generating natural-sounding dialogue that matches your actors' voices.",
-      imageUrl: womansJeansChatImage
+      category: "Post-Production",
+      description:
+        "Modify dialogue in post-production with our AI voice synthesis. Change lines without re-shoots by generating natural-sounding dialogue that matches your actors' voices.",
+      imageUrl: womansJeansChatImage,
     },
     // Additional item for Post-Production row
     {
-      id: 'physics-engine',
-      title: 'Physics Engine AI',
+      id: "physics-engine",
+      title: "Physics Engine AI",
       icon: <Box className="h-8 w-8" />,
-      category: 'Post-Production',
-      description: 'Create realistic physical simulations for special effects. Our AI physics engine can generate convincing natural phenomena like water, fire, and destruction.',
-      imageUrl: womansLookingUpImage
+      category: "Post-Production",
+      description:
+        "Create realistic physical simulations for special effects. Our AI physics engine can generate convincing natural phenomena like water, fire, and destruction.",
+      imageUrl: womansLookingUpImage,
     },
   ];
 
-  const preProductionStages = productionStages.filter(stage => stage.category === 'Pre-Production');
-  const productionStages2 = productionStages.filter(stage => stage.category === 'Production');
-  const postProductionStages = productionStages.filter(stage => stage.category === 'Post-Production');
+  const preProductionStages = productionStages.filter(
+    (stage) => stage.category === "Pre-Production",
+  );
+  const productionStages2 = productionStages.filter(
+    (stage) => stage.category === "Production",
+  );
+  const postProductionStages = productionStages.filter(
+    (stage) => stage.category === "Post-Production",
+  );
 
-  const activeStage = productionStages.find(stage => stage.id === activeTab);
+  const activeStage = productionStages.find((stage) => stage.id === activeTab);
 
   return (
-    <section className="relative w-full py-20 overflow-hidden" id="production-stages">
+    <section
+      className="relative w-full py-20 overflow-hidden"
+      id="production-stages"
+    >
       <ScrollAnimation>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             variants={fadeInUp}
             initial="hidden"
@@ -186,7 +233,9 @@ export default function ProductionStagesSection() {
                   onClick={() => setActiveTab(stage.id)}
                   className={cn(
                     "flex flex-col items-center p-4 rounded-lg transition-all duration-300 hover:bg-zinc-800/70 backdrop-blur-sm",
-                    activeTab === stage.id ? "bg-zinc-800/80 border border-zinc-600" : "bg-zinc-900/50"
+                    activeTab === stage.id
+                      ? "bg-zinc-800/80 border border-zinc-600"
+                      : "bg-zinc-900/50",
                   )}
                 >
                   <div className="mb-2 text-white">{stage.icon}</div>
@@ -206,7 +255,9 @@ export default function ProductionStagesSection() {
                   onClick={() => setActiveTab(stage.id)}
                   className={cn(
                     "flex flex-col items-center p-4 rounded-lg transition-all duration-300 hover:bg-zinc-800/70 backdrop-blur-sm",
-                    activeTab === stage.id ? "bg-zinc-800/80 border border-zinc-600" : "bg-zinc-900/50"
+                    activeTab === stage.id
+                      ? "bg-zinc-800/80 border border-zinc-600"
+                      : "bg-zinc-900/50",
                   )}
                 >
                   <div className="mb-2 text-white">{stage.icon}</div>
@@ -216,7 +267,7 @@ export default function ProductionStagesSection() {
               ))}
             </div>
           </div>
-          
+
           <div>
             <h3 className="text-xl text-gray-400 mb-4">Post-Production</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -226,7 +277,9 @@ export default function ProductionStagesSection() {
                   onClick={() => setActiveTab(stage.id)}
                   className={cn(
                     "flex flex-col items-center p-4 rounded-lg transition-all duration-300 hover:bg-zinc-800/70 backdrop-blur-sm",
-                    activeTab === stage.id ? "bg-zinc-800/80 border border-zinc-600" : "bg-zinc-900/50"
+                    activeTab === stage.id
+                      ? "bg-zinc-800/80 border border-zinc-600"
+                      : "bg-zinc-900/50",
                   )}
                 >
                   <div className="mb-2 text-white">{stage.icon}</div>
@@ -260,13 +313,13 @@ export default function ProductionStagesSection() {
               <div className="md:w-1/2">
                 <div className="aspect-video rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
                   {activeStage.imageUrl ? (
-                    <ImageLoader 
-                      src={activeStage.imageUrl} 
+                    <ImageLoader
+                      src={activeStage.imageUrl}
                       className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
                     />
                   ) : (
-                    <PatternImage 
-                      patternType={activeStage.patternType || 'random'} 
+                    <PatternImage
+                      patternType={activeStage.patternType || "random"}
                       className="w-full h-full opacity-80 hover:opacity-100 transition-opacity"
                       primaryColor={`hsl(${Math.floor(Math.random() * 360)}, 70%, 50%)`}
                       secondaryColor={`hsl(${Math.floor(Math.random() * 360)}, 70%, 60%)`}
