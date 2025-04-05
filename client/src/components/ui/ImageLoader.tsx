@@ -23,10 +23,11 @@ export default function ImageLoader({ className = "", src = heroImage }: ImageLo
     <div className={`${className} ${loaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}>
       {loaded && (
         <div 
-          className="w-full h-full bg-cover bg-center" 
+          className="w-full h-full bg-cover bg-center bg-no-repeat" 
           style={{ 
             backgroundImage: `url(${src})`,
-            backgroundSize: 'cover'
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
           }}
         />
       )}
