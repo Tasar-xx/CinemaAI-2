@@ -64,11 +64,24 @@ export default function ToolsSection() {
                     </div>
                   </div>
                   
-                  <AspectRatio ratio={16/9} className="rounded-xl overflow-hidden bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 shadow-xl mb-6">
-                    <div className="flex items-center justify-center h-full p-6 text-center">
-                      <p className="text-gray-400">{tool.demoText}</p>
-                    </div>
-                  </AspectRatio>
+                  <div className="rounded-xl overflow-hidden bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 shadow-xl mb-6">
+                    <AspectRatio ratio={16/9}>
+                      <div className="flex w-full h-full">
+                        <div className="flex-1 overflow-hidden">
+                          <img src="/images/img1.jpg" alt="Film scene 1" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                        </div>
+                        <div className="flex-1 overflow-hidden">
+                          <img src="/images/img2.jpg" alt="Film scene 2" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                        </div>
+                        <div className="flex-1 overflow-hidden">
+                          <img src="/images/img3.jpg" alt="Film scene 3" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                        </div>
+                        <div className="flex-1 overflow-hidden">
+                          <img src="/images/img4.jpg" alt="Film scene 4" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                        </div>
+                      </div>
+                    </AspectRatio>
+                  </div>
                   
                   <a 
                     href={tool.learnMoreLink} 
