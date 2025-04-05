@@ -35,7 +35,11 @@ export default function ReflectiveSurface({
       whileHover={hoverEffect ? "hover" : undefined}
       variants={hoverVariants}
     >
-      {children}
+      <img 
+                  src="/images/Screenshot_20250405-033344~2.jpg" 
+                  alt="Platform Overview" 
+                  className="w-full h-full object-cover"
+                />
     </motion.div>
   );
 }
