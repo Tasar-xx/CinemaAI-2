@@ -98,24 +98,11 @@ export default function IntroSection() {
                 ratio={16 / 9}
                 className="h-full w-full bg-[#2C2C2E]"
               >
-                <div className="flex items-center justify-center h-full">
-                  <div className="text-center">
-                    <svg
-                      className="w-20 h-20 mx-auto text-white opacity-50"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <p className="mt-4 text-sm text-gray-400">
-                      Platform Overview Video
-                    </p>
-                  </div>
-                </div>
+                <img 
+                src="/images/Screenshot_20250405-033344~2.jpg" 
+                alt="Platform Overview" 
+                className="w-full h-full object-cover"
+              />
               </AspectRatio>
             </ReflectiveSurface>
           </div>
