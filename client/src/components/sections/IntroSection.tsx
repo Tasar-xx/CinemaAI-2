@@ -1,6 +1,6 @@
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import ScrollAnimation from "@/components/ui/ScrollAnimation";
 import ReflectiveSurface from "@/components/ui/ReflectiveSurface";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import ImageLoader from "@/components/ui/ImageLoader";
 import platformOverviewImage from "@/assets/platform-overview.jpeg";
 
@@ -96,11 +96,8 @@ export default function IntroSection() {
             </ScrollAnimation>
 
             <ReflectiveSurface className="rounded-2xl overflow-hidden h-full">
-              <AspectRatio
-                ratio={16 / 9}
-                className="h-full w-full"
-              >
-                <ImageLoader 
+              <AspectRatio ratio={10 / 16} className="h-full w-full">
+                <ImageLoader
                   className="w-full h-full object-cover"
                   src={platformOverviewImage}
                 />
