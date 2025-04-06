@@ -95,7 +95,7 @@ export default function ToolsSection() {
 
                   <a
                     href={tool.learnMoreLink}
-                    className="inline-flex items-center px-6 py-3 rounded-md bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 text-white font-medium shadow-lg border border-white/5 hover:border-white/20"
+                    className="inline-flex items-center px-8 py-3 rounded-md bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 text-white font-medium shadow-lg border border-white/5 hover:border-white/20"
                   >
                     Learn more
                     <svg

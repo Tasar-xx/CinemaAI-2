@@ -1,8 +1,8 @@
 // Import unique images for benefits
-import foggyWomanImage from '@assets/IMG-20250405-WA0005.jpg'; // Woman in fog
-import rainbowSweaterImage from '@assets/IMG-20250405-WA0047.jpg'; // Person in rainbow sweater
-import casualWhiteShirtImage from '@assets/IMG-20250405-WA0052.jpg'; // Person in casual white t-shirt
-import dreadsImage from '@assets/IMG-20250405-WA0056.jpg'; // Person with dreadlocks
+import foggyWomanImage from '@assets/PI.jpeg'; // Woman in fog
+import rainbowSweaterImage from '@assets/PE.jpeg'; // Person in rainbow sweater
+import casualWhiteShirtImage from '@assets/creative.jpeg'; // Person in casual white t-shirt
+import dreadsImage from '@assets/future.jpeg'; // Person with dreadlocks
 
 export interface Benefit {
   id: string;

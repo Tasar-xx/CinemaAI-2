@@ -12,7 +12,7 @@ export default function BenefitsSection() {
           animation="fadeUp"
           className="max-w-4xl mx-auto text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl text-gradient md:text-5xl font-bold mb-6">
             The Future of Filmmaking
           </h2>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto">

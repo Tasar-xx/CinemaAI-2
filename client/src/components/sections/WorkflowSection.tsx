@@ -16,7 +16,7 @@ export default function WorkflowSection() {
           animation="fadeUp"
           className="max-w-4xl mx-auto text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl text-gradient md:text-5xl font-bold mb-6">
             Seamless Filmmaking Workflow
           </h2>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto">
@@ -66,8 +66,8 @@ export default function WorkflowSection() {
                 <ScrollAnimation animation="slideRight">
                   <ReflectiveSurface className="rounded-xl overflow-hidden">
                     <AspectRatio ratio={16 / 9}>
-                      <ImageLoader 
-                        className="w-full h-full object-cover" 
+                      <ImageLoader
+                        className="w-full h-full object-cover"
                         src={preproductionImage}
                       />
                     </AspectRatio>
@@ -106,8 +106,8 @@ export default function WorkflowSection() {
                 <ScrollAnimation animation="slideLeft" className="md:order-1">
                   <ReflectiveSurface className="rounded-xl overflow-hidden">
                     <AspectRatio ratio={16 / 9}>
-                      <ImageLoader 
-                        className="w-full h-full object-cover" 
+                      <ImageLoader
+                        className="w-full h-full object-cover"
                         src={productionImage}
                       />
                     </AspectRatio>
@@ -150,8 +150,8 @@ export default function WorkflowSection() {
                 <ScrollAnimation animation="slideRight">
                   <ReflectiveSurface className="rounded-xl overflow-hidden">
                     <AspectRatio ratio={16 / 9}>
-                      <ImageLoader 
-                        className="w-full h-full object-cover" 
+                      <ImageLoader
+                        className="w-full h-full object-cover"
                         src={postproductionImage}
                       />
                     </AspectRatio>

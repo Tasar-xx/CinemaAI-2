@@ -11,7 +11,7 @@ export default function IntroSection() {
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <ScrollAnimation animation="fadeUp" delay={0.1}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl text-gradient md:text-4xl font-bold mb-6">
                 A New Era for Creative Vision
               </h2>
               <p className="text-gray-300 text-lg mb-8 leading-relaxed">
