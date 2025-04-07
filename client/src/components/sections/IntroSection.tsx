@@ -96,11 +96,8 @@ export default function IntroSection() {
             </ScrollAnimation>
 
             <ReflectiveSurface className="rounded-2xl overflow-hidden h-full">
-              <AspectRatio
-                ratio={16 / 9}
-                className="h-full w-full"
-              >
-                <ImageLoader 
+              <AspectRatio ratio={15 / 25} className="h-full w-full">
+                <ImageLoader
                   className="w-full h-full object-cover"
                   src={platformOverviewImage}
                 />

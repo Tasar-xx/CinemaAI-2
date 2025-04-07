@@ -24,14 +24,14 @@ import ImageLoader from "@/components/ui/ImageLoader";
 import PatternImage from "@/lib/svgPatterns";
 
 // Import our local images
-import womansLegsImage from "@assets/IMG-20250405-WA0015.jpg";
+import womansLegsImage from "@assets/Generated Image April 07, 2025 - 2_58AM.jpeg";
 import womansGroundImage from "@assets/IMG-20250405-WA0016.jpg";
 import womansDressImage from "@assets/IMG-20250405-WA0001.jpg";
 import womansWithTeethImage from "@assets/IMG-20250405-WA0002.jpg";
 import womansJeansChatImage from "@assets/IMG-20250405-WA0003.jpg";
 import womansLookingUpImage from "@assets/IMG-20250405-WA0009.jpg";
 import womansPurpleTeethImage from "@assets/IMG-20250405-WA0019.jpg";
-import womansRedImage from "@assets/IMG-20250405-WA0010.jpg";
+import womansRedImage from "@assets/storyboard new.jpeg";
 import womansDarkImage from "@assets/IMG-20250405-WA0011.jpg";
 import groupModelsImage from "@assets/20250405_185028_0000.png";
 
