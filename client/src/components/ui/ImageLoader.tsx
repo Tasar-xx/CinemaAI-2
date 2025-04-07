@@ -1,60 +1,36 @@
-
 import { useState, useEffect } from 'react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import heroImage from '@assets/Untitled design_20250405_175152_0000.png';
+import modelsImage from '@assets/20250405_185028_0000.png';
 
 interface ImageLoaderProps {
   className?: string;
-  images?: string[];
+  src?: string;
 }
 
-export default function ImageLoader({ className = "", images = [heroImage] }: ImageLoaderProps) {
-  const [loadedImages, setLoadedImages] = useState<boolean[]>(new Array(images.length).fill(false));
+export default function ImageLoader({ className = "", src = heroImage }: ImageLoaderProps) {
+  const [loaded, setLoaded] = useState(false);
   
   useEffect(() => {
-    images.forEach((src, index) => {
-      const img = new Image();
-      img.src = src;
-      img.onload = () => {
-        setLoadedImages(prev => {
-          const newState = [...prev];
-          newState[index] = true;
-          return newState;
-        });
-      };
-      img.onerror = (e) => {
-        console.error("Image failed to load:", src, e);
-      };
-    });
-  }, [images]);
+    const img = new Image();
+    img.src = src;
+    img.onload = () => setLoaded(true);
+    // Handle loading error
+    img.onerror = (e) => {
+      console.error("Image failed to load:", src, e);
+    };
+  }, [src]);
 
   return (
-    <Carousel className={className}>
-      <CarouselContent>
-        {images.map((src, index) => (
-          <CarouselItem key={src}>
-            <div className={`w-full h-full ${loadedImages[index] ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}>
-              {loadedImages[index] && (
-                <div 
-                  className="w-full h-full bg-cover bg-center" 
-                  style={{ 
-                    backgroundImage: `url(${src})`,
-                    backgroundSize: 'cover'
-                  }}
-                />
-              )}
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <div className={`${className} ${loaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}>
+      {loaded && (
+        <div 
+          className="w-full h-full bg-cover bg-center" 
+          style={{ 
+            backgroundImage: `url(${src})`,
+            backgroundSize: 'cover'
+          }}
+        />
+      )}
+    </div>
   );
 }
