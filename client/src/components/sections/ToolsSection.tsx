@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import ScrollAnimation from "@/components/ui/ScrollAnimation";
@@ -11,6 +11,17 @@ import { fadeInUp } from "@/lib/animation";
 export default function ToolsSection() {
   const [visibleTools, setVisibleTools] = useState(6);
   const [isLoading, setIsLoading] = useState(false);
+  // Track current image index for each tool
+  const [currentImageIndex, setCurrentImageIndex] = useState<Record<string, number>>({});
+
+  // Initialize the current image index for each tool
+  useEffect(() => {
+    const initialIndices: Record<string, number> = {};
+    tools.forEach(tool => {
+      initialIndices[tool.id] = 0;
+    });
+    setCurrentImageIndex(initialIndices);
+  }, []);
 
   const handleLoadMore = () => {
     if (isLoading) return;
@@ -20,6 +31,29 @@ export default function ToolsSection() {
       setVisibleTools((prevCount) => Math.min(prevCount + 3, tools.length));
       setIsLoading(false);
     }, 800);
+  };
+  
+  // Handle image navigation for the carousel
+  const nextImage = (toolId: string) => {
+    setCurrentImageIndex(prev => {
+      const tool = tools.find(t => t.id === toolId);
+      const imageCount = tool?.images?.length || 1;
+      return {
+        ...prev,
+        [toolId]: (prev[toolId] + 1) % imageCount
+      };
+    });
+  };
+
+  const prevImage = (toolId: string) => {
+    setCurrentImageIndex(prev => {
+      const tool = tools.find(t => t.id === toolId);
+      const imageCount = tool?.images?.length || 1;
+      return {
+        ...prev,
+        [toolId]: (prev[toolId] - 1 + imageCount) % imageCount
+      };
+    });
   };
 
   return (
@@ -81,17 +115,98 @@ export default function ToolsSection() {
                     </div>
                   </div>
 
-                  <AspectRatio
-                    ratio={16 / 9}
-                    className="rounded-xl overflow-hidden bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 shadow-xl mb-6"
-                  >
-                    {tool.imageUrl && (
-                      <ImageLoader
-                        className="w-full h-full"
-                        src={tool.imageUrl}
-                      />
+                  <div className="relative">
+                    <AspectRatio
+                      ratio={16 / 9}
+                      className="rounded-xl overflow-hidden bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 shadow-xl mb-6"
+                    >
+                      {tool.images && tool.images.length > 0 ? (
+                        <ImageLoader
+                          className="w-full h-full transition-opacity duration-300"
+                          src={tool.images[currentImageIndex[tool.id] || 0]}
+                        />
+                      ) : (
+                        tool.imageUrl && (
+                          <ImageLoader
+                            className="w-full h-full"
+                            src={tool.imageUrl}
+                          />
+                        )
+                      )}
+                    </AspectRatio>
+                    
+                    {/* Carousel Navigation */}
+                    {tool.images && tool.images.length > 1 && (
+                      <div className="absolute inset-0 flex items-center justify-between">
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            prevImage(tool.id);
+                          }}
+                          className="ml-2 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 flex items-center justify-center text-white focus:outline-none transform transition-transform hover:scale-110"
+                        >
+                          <svg
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2.5"
+                              d="M15 19l-7-7 7-7"
+                            ></path>
+                          </svg>
+                        </button>
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            nextImage(tool.id);
+                          }}
+                          className="mr-2 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 flex items-center justify-center text-white focus:outline-none transform transition-transform hover:scale-110"
+                        >
+                          <svg
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2.5"
+                              d="M9 5l7 7-7 7"
+                            ></path>
+                          </svg>
+                        </button>
+                      </div>
                     )}
-                  </AspectRatio>
+                    
+                    {/* Carousel Indicators */}
+                    {tool.images && tool.images.length > 1 && (
+                      <div className="absolute -bottom-2 inset-x-0 flex justify-center gap-1.5">
+                        {tool.images.map((_, idx) => (
+                          <button
+                            key={idx}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setCurrentImageIndex(prev => ({
+                                ...prev,
+                                [tool.id]: idx
+                              }));
+                            }}
+                            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                              currentImageIndex[tool.id] === idx 
+                                ? "bg-white scale-110" 
+                                : "bg-white/40 hover:bg-white/60"
+                            }`}
+                            aria-label={`View image ${idx + 1}`}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
 
                   <a
                     href={tool.learnMoreLink}
