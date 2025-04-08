@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Camera,
@@ -34,6 +34,13 @@ import womansPurpleTeethImage from "@assets/IMG-20250405-WA0019.jpg";
 import womansRedImage from "@assets/storyboard new.jpeg";
 import womansDarkImage from "@assets/IMG-20250405-WA0011.jpg";
 import groupModelsImage from "@assets/20250405_185028_0000.png";
+// Import sample video
+import sampleVideo from "@assets/VID-20250407-WA0013.mp4";
+
+interface MediaItem {
+  type: 'image' | 'video';
+  url: string;
+}
 
 interface ProductionStage {
   id: string;
@@ -42,6 +49,8 @@ interface ProductionStage {
   category: string;
   description: string;
   imageUrl?: string;
+  videoUrl?: string;
+  media?: MediaItem[];
   patternType?:
     | "grid"
     | "circuit"
@@ -57,6 +66,7 @@ interface ProductionStage {
 
 export default function ProductionStagesSection() {
   const [activeTab, setActiveTab] = useState("script-development");
+  const [currentMediaIndex, setCurrentMediaIndex] = useState<Record<string, number>>({});
 
   const productionStages: ProductionStage[] = [
     // Pre-Production Row 1
@@ -68,6 +78,11 @@ export default function ProductionStagesSection() {
       description:
         "Our AI analyzes your script to identify weak points in character development, plot holes, and pacing issues. You can experiment with different scenarios and see how they affect the overall narrative flow.",
       imageUrl: womansLegsImage,
+      media: [
+        { type: 'image', url: womansLegsImage },
+        { type: 'video', url: sampleVideo },
+        { type: 'image', url: womansGroundImage }
+      ],
     },
     {
       id: "storyboarding",
@@ -77,6 +92,11 @@ export default function ProductionStagesSection() {
       description:
         "Generate detailed storyboards from your script with our AI visualization tool. Quickly iterate through different visual interpretations of scenes to find the perfect framing.",
       imageUrl: womansRedImage,
+      media: [
+        { type: 'image', url: womansRedImage },
+        { type: 'image', url: womansGroundImage },
+        { type: 'video', url: sampleVideo }
+      ],
     },
     {
       id: "location-scouting",
@@ -150,6 +170,11 @@ export default function ProductionStagesSection() {
       description:
         "Capture realistic motion data using AI-powered computer vision. Turn standard video footage into detailed motion capture data without specialized equipment.",
       imageUrl: womansDarkImage,
+      media: [
+        { type: 'video', url: sampleVideo },
+        { type: 'image', url: womansDarkImage },
+        { type: 'image', url: womansWithTeethImage }
+      ],
     },
     {
       id: "relighting",
@@ -177,6 +202,11 @@ export default function ProductionStagesSection() {
       description:
         "Modify dialogue in post-production with our AI voice synthesis. Change lines without re-shoots by generating natural-sounding dialogue that matches your actors' voices.",
       imageUrl: womansJeansChatImage,
+      media: [
+        { type: 'image', url: womansJeansChatImage },
+        { type: 'video', url: sampleVideo },
+        { type: 'image', url: womansLookingUpImage }
+      ],
     },
     // Additional item for Post-Production row
     {
@@ -190,6 +220,15 @@ export default function ProductionStagesSection() {
     },
   ];
 
+  // Initialize media indices on component mount
+  useEffect(() => {
+    const initialIndices: Record<string, number> = {};
+    productionStages.forEach(stage => {
+      initialIndices[stage.id] = 0;
+    });
+    setCurrentMediaIndex(initialIndices);
+  }, []);
+  
   const preProductionStages = productionStages.filter(
     (stage) => stage.category === "Pre-Production",
   );
@@ -201,6 +240,27 @@ export default function ProductionStagesSection() {
   );
 
   const activeStage = productionStages.find((stage) => stage.id === activeTab);
+  
+  // Media navigation functions
+  const handlePrevMedia = (stageId: string) => {
+    if (!activeStage?.media || activeStage.media.length <= 1) return;
+    
+    setCurrentMediaIndex(prev => {
+      const currentIndex = prev[stageId] || 0;
+      const newIndex = currentIndex === 0 ? activeStage.media!.length - 1 : currentIndex - 1;
+      return { ...prev, [stageId]: newIndex };
+    });
+  };
+  
+  const handleNextMedia = (stageId: string) => {
+    if (!activeStage?.media || activeStage.media.length <= 1) return;
+    
+    setCurrentMediaIndex(prev => {
+      const currentIndex = prev[stageId] || 0;
+      const newIndex = (currentIndex + 1) % activeStage.media!.length;
+      return { ...prev, [stageId]: newIndex };
+    });
+  };
 
   return (
     <section
@@ -311,8 +371,77 @@ export default function ProductionStagesSection() {
                 </p>
               </div>
               <div className="md:w-1/2">
-                <div className="aspect-video rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
-                  {activeStage.imageUrl ? (
+                <div className="aspect-video rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 relative group">
+                  {activeStage.media && activeStage.media.length > 0 ? (
+                    <>
+                      <div className="w-full h-full">
+                        {activeStage.media[currentMediaIndex[activeStage.id] || 0].type === 'image' ? (
+                          <ImageLoader
+                            src={activeStage.media[currentMediaIndex[activeStage.id] || 0].url}
+                            className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
+                          />
+                        ) : (
+                          <video
+                            src={activeStage.media[currentMediaIndex[activeStage.id] || 0].url}
+                            className="w-full h-full object-cover"
+                            controls
+                            autoPlay
+                            loop
+                            muted
+                          />
+                        )}
+                      </div>
+                      
+                      {/* Carousel Navigation */}
+                      {activeStage.media.length > 1 && (
+                        <>
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handlePrevMedia(activeStage.id);
+                            }}
+                            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                          </button>
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleNextMedia(activeStage.id);
+                            }}
+                            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </button>
+                          
+                          {/* Dots indicator */}
+                          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            {activeStage.media.map((_, index) => (
+                              <button
+                                key={index}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setCurrentMediaIndex(prev => ({
+                                    ...prev,
+                                    [activeStage.id]: index
+                                  }));
+                                }}
+                                className={`w-2 h-2 rounded-full ${
+                                  index === (currentMediaIndex[activeStage.id] || 0)
+                                    ? 'bg-white'
+                                    : 'bg-white/50 hover:bg-white/80'
+                                }`}
+                              />
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </>
+                  ) : activeStage.imageUrl ? (
                     <ImageLoader
                       src={activeStage.imageUrl}
                       className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"

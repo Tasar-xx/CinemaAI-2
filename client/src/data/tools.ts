@@ -5,6 +5,10 @@ import lookDevImage from "../assets/look-dev.png";
 import characterDevImage from "../assets/character-dev.png";
 import locationScoutingImage from "../assets/location-scouting.jpeg";
 import storyboardingImage from "../assets/storyboarding.jpeg";
+import location1 from "@assets/location1.jpg";
+import location2 from "@assets/location2.jpg";
+import location3 from "@assets/location3.jpg";
+import location4 from "@assets/location4.jpg";
 
 export interface Tool {
   id: string;
@@ -60,7 +64,7 @@ export const tools: Tool[] = [
     demoText: "Character visualization demo",
     learnMoreLink: "#",
     imageUrl: characterDevImage,
-    images: [characterDevImage, locationScoutingImage, conceptArtImage],
+    images: [characterDevImage],
   },
   {
     id: "location-scouting",
@@ -70,8 +74,8 @@ export const tools: Tool[] = [
     icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
     demoText: "3D location scouting demo",
     learnMoreLink: "#",
-    imageUrl: locationScoutingImage,
-    images: [locationScoutingImage, characterDevImage, lookDevImage],
+    imageUrl: location1,
+    images: [location1, location4, location3],
   },
   {
     id: "storyboarding",
