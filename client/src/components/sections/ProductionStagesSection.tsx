@@ -36,9 +36,14 @@ import womansDarkImage from "@assets/IMG-20250405-WA0011.jpg";
 import groupModelsImage from "@assets/20250405_185028_0000.png";
 // Import sample video
 import sampleVideo from "@assets/VID-20250407-WA0013.mp4";
+import motioncap1 from "@assets/motioncap1.mp4";
+import lipdub1 from "@assets/lipdub1.mp4";
+import lipdub2 from "@assets/lipdub2.mp4";
+import gaussiansplat from "@assets/gaussiansplat.mp4";
+import cameratests from "@assets/cameratests.mp4";
 
 interface MediaItem {
-  type: 'image' | 'video';
+  type: "image" | "video";
   url: string;
 }
 
@@ -66,7 +71,9 @@ interface ProductionStage {
 
 export default function ProductionStagesSection() {
   const [activeTab, setActiveTab] = useState("script-development");
-  const [currentMediaIndex, setCurrentMediaIndex] = useState<Record<string, number>>({});
+  const [currentMediaIndex, setCurrentMediaIndex] = useState<
+    Record<string, number>
+  >({});
 
   const productionStages: ProductionStage[] = [
     // Pre-Production Row 1
@@ -79,9 +86,9 @@ export default function ProductionStagesSection() {
         "Our AI analyzes your script to identify weak points in character development, plot holes, and pacing issues. You can experiment with different scenarios and see how they affect the overall narrative flow.",
       imageUrl: womansLegsImage,
       media: [
-        { type: 'image', url: womansLegsImage },
-        { type: 'video', url: sampleVideo },
-        { type: 'image', url: womansGroundImage }
+        { type: "image", url: womansLegsImage },
+        { type: "video", url: sampleVideo },
+        { type: "image", url: womansGroundImage },
       ],
     },
     {
@@ -93,9 +100,9 @@ export default function ProductionStagesSection() {
         "Generate detailed storyboards from your script with our AI visualization tool. Quickly iterate through different visual interpretations of scenes to find the perfect framing.",
       imageUrl: womansRedImage,
       media: [
-        { type: 'image', url: womansRedImage },
-        { type: 'image', url: womansGroundImage },
-        { type: 'video', url: sampleVideo }
+        { type: "image", url: womansRedImage },
+        { type: "image", url: womansGroundImage },
+        { type: "video", url: sampleVideo },
       ],
     },
     {
@@ -152,6 +159,7 @@ export default function ProductionStagesSection() {
       description:
         "Design and modify sets virtually before construction. Test different layouts, lighting setups, and decorative elements to find the perfect setting for your scenes.",
       imageUrl: groupModelsImage,
+      media: [{ type: "video", url: gaussiansplat }],
     },
     {
       id: "lighting-simulation",
@@ -171,19 +179,21 @@ export default function ProductionStagesSection() {
         "Capture realistic motion data using AI-powered computer vision. Turn standard video footage into detailed motion capture data without specialized equipment.",
       imageUrl: womansDarkImage,
       media: [
-        { type: 'video', url: sampleVideo },
-        { type: 'image', url: womansDarkImage },
-        { type: 'image', url: womansWithTeethImage }
+        { type: "video", url: sampleVideo },
+        { type: "video", url: motioncap1 },
       ],
     },
     {
       id: "relighting",
-      title: "Relighting",
+      title: "Shot Redesign",
       icon: <RefreshCcw className="h-8 w-8" />,
       category: "Post-Production",
       description:
-        "Change the lighting of footage in post-production with AI-powered relighting tools. Correct lighting issues or completely transform the mood of a scene.",
+        "Change the perspective of footage in post-production with AI-powered video generation tools. Correct framing or completely transform the mood of a scene.",
       imageUrl: womansPurpleTeethImage,
+      media: [
+        { type: "video", url: cameratests }
+      ],
     },
     {
       id: "sound-reformer",
@@ -196,16 +206,15 @@ export default function ProductionStagesSection() {
     },
     {
       id: "dialogue-change",
-      title: "Dialogue Change",
+      title: "Localization",
       icon: <MessageSquare className="h-8 w-8" />,
       category: "Post-Production",
       description:
         "Modify dialogue in post-production with our AI voice synthesis. Change lines without re-shoots by generating natural-sounding dialogue that matches your actors' voices.",
       imageUrl: womansJeansChatImage,
       media: [
-        { type: 'image', url: womansJeansChatImage },
-        { type: 'video', url: sampleVideo },
-        { type: 'image', url: womansLookingUpImage }
+        { type: "video", url: lipdub1 },
+        { type: "video", url: lipdub2 },
       ],
     },
     // Additional item for Post-Production row
@@ -223,12 +232,12 @@ export default function ProductionStagesSection() {
   // Initialize media indices on component mount
   useEffect(() => {
     const initialIndices: Record<string, number> = {};
-    productionStages.forEach(stage => {
+    productionStages.forEach((stage) => {
       initialIndices[stage.id] = 0;
     });
     setCurrentMediaIndex(initialIndices);
   }, []);
-  
+
   const preProductionStages = productionStages.filter(
     (stage) => stage.category === "Pre-Production",
   );
@@ -240,22 +249,23 @@ export default function ProductionStagesSection() {
   );
 
   const activeStage = productionStages.find((stage) => stage.id === activeTab);
-  
+
   // Media navigation functions
   const handlePrevMedia = (stageId: string) => {
     if (!activeStage?.media || activeStage.media.length <= 1) return;
-    
-    setCurrentMediaIndex(prev => {
+
+    setCurrentMediaIndex((prev) => {
       const currentIndex = prev[stageId] || 0;
-      const newIndex = currentIndex === 0 ? activeStage.media!.length - 1 : currentIndex - 1;
+      const newIndex =
+        currentIndex === 0 ? activeStage.media!.length - 1 : currentIndex - 1;
       return { ...prev, [stageId]: newIndex };
     });
   };
-  
+
   const handleNextMedia = (stageId: string) => {
     if (!activeStage?.media || activeStage.media.length <= 1) return;
-    
-    setCurrentMediaIndex(prev => {
+
+    setCurrentMediaIndex((prev) => {
       const currentIndex = prev[stageId] || 0;
       const newIndex = (currentIndex + 1) % activeStage.media!.length;
       return { ...prev, [stageId]: newIndex };
@@ -375,14 +385,24 @@ export default function ProductionStagesSection() {
                   {activeStage.media && activeStage.media.length > 0 ? (
                     <>
                       <div className="w-full h-full">
-                        {activeStage.media[currentMediaIndex[activeStage.id] || 0].type === 'image' ? (
+                        {activeStage.media[
+                          currentMediaIndex[activeStage.id] || 0
+                        ].type === "image" ? (
                           <ImageLoader
-                            src={activeStage.media[currentMediaIndex[activeStage.id] || 0].url}
+                            src={
+                              activeStage.media[
+                                currentMediaIndex[activeStage.id] || 0
+                              ].url
+                            }
                             className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
                           />
                         ) : (
                           <video
-                            src={activeStage.media[currentMediaIndex[activeStage.id] || 0].url}
+                            src={
+                              activeStage.media[
+                                currentMediaIndex[activeStage.id] || 0
+                              ].url
+                            }
                             className="w-full h-full object-cover"
                             controls
                             autoPlay
@@ -391,33 +411,55 @@ export default function ProductionStagesSection() {
                           />
                         )}
                       </div>
-                      
+
                       {/* Carousel Navigation */}
                       {activeStage.media.length > 1 && (
                         <>
-                          <button 
+                          <button
                             onClick={(e) => {
                               e.stopPropagation();
                               handlePrevMedia(activeStage.id);
                             }}
                             className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
                           >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-8 w-8"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M15 19l-7-7 7-7"
+                              />
                             </svg>
                           </button>
-                          <button 
+                          <button
                             onClick={(e) => {
                               e.stopPropagation();
                               handleNextMedia(activeStage.id);
                             }}
                             className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
                           >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-8 w-8"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 5l7 7-7 7"
+                              />
                             </svg>
                           </button>
-                          
+
                           {/* Dots indicator */}
                           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
                             {activeStage.media.map((_, index) => (
@@ -425,15 +467,16 @@ export default function ProductionStagesSection() {
                                 key={index}
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  setCurrentMediaIndex(prev => ({
+                                  setCurrentMediaIndex((prev) => ({
                                     ...prev,
-                                    [activeStage.id]: index
+                                    [activeStage.id]: index,
                                   }));
                                 }}
                                 className={`w-2 h-2 rounded-full ${
-                                  index === (currentMediaIndex[activeStage.id] || 0)
-                                    ? 'bg-white'
-                                    : 'bg-white/50 hover:bg-white/80'
+                                  index ===
+                                  (currentMediaIndex[activeStage.id] || 0)
+                                    ? "bg-white"
+                                    : "bg-white/50 hover:bg-white/80"
                                 }`}
                               />
                             ))}
